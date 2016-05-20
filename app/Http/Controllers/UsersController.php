@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Topic;
 
+use App\User;
+
 class UsersController extends Controller
 {
     //
@@ -48,5 +50,48 @@ class UsersController extends Controller
             $topic->delete();
         }
         return redirect('user');
+    }
+    
+    public function admin(){
+        $users = User::all();
+        return view('Users.admin')->with('users',$users);
+    }
+    
+    public function add_user($id = null){
+        $user = null;
+        if(isset($id) && $id != null){
+            $user = User::findOrFail($id);
+        }
+        return view('Users.add_user')->with('user',$user);
+    }
+    
+    public function update_user(Request $request){
+        $id = $request->id;
+        if(!isset($id) || $id == null){
+            $data_input = $request->all();
+            User::create($data_input);
+            return redirect('/user/admin');
+        }else{
+            $data_input = $request->all();            
+            $user_save = User::findOrFail($data_input['id']);
+            $user_save['name'] = $data_input['name'];
+            $user_save['password'] = $data_input['password'];
+            $user_save['email'] = $data_input['email'];
+            $user_save->save();
+            return redirect('user/admin');
+        }
+    }
+    
+    public function delete_user($id = null){
+        $user = null;
+        if(isset($id) && $id != null){
+            $user = User::findOrFail($id);
+            $user->delete();
+        }
+        return redirect('user/admin');
+    }
+    
+    public function logout(){
+        
     }
 }

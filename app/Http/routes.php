@@ -23,3 +23,10 @@ Route::get('/user/addpost/','UsersController@add_post');
 Route::get('/user/deletepost/{id}','UsersController@delete_post');
 Route::post('/user/updatepost','UsersController@update_post');
 Route::patch('/user/updatepost','UsersController@update_post');
+
+Route::get('/user/admin/','UsersController@admin');
+Route::get('/user/adduser/','UsersController@add_user');
+Route::get('/user/adduser/{id}','UsersController@add_user');
+Route::post('/user/updateuser','UsersController@update_user');
+Route::patch('/user/updateuser','UsersController@update_user');
+Route::get('/user/deleteuser/{id}','UsersController@delete_user');
