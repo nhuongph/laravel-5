@@ -115,7 +115,8 @@
 		{!! Form::submit('Submit',['class' => 'btn btn-success']) !!}
             {!! Form::close() !!}
         @else
-            {!! Form::model($topic,[ 'method' => 'PATCH', 'action' => ['UsersController@update_post',$topic->id] ]) !!}
+            {!! Form::model($topic,[ 'method' => 'PATCH', 'action' => ['UsersController@update_post'] ]) !!}
+                {!! Form::hidden('id',null, array('class'=>'form-control')) !!}
 		<div class="form-group">
                 {!! Form::label('title','Title:') !!}
 		{!! Form::text('title',null, array('class'=>'form-control')) !!} <br />

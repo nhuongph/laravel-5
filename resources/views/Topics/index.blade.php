@@ -86,7 +86,7 @@
                     <h1><?php echo HTML::link('/topic/post/'.$item['id'], $item['title'])?></h1>
                     <?php $date = new DateTime($item['updated_at']); ?>
                     <p>Posted on {{ $date->format('jS M Y h:i:s') }}</p>
-                    <p>{{ $item['description'] }}</p>
+                    <p><?php echo $item['description'] ?></p>
                     <p><?php echo HTML::link('/topic/post/'.$item['id'], 'Read More')  ?></p>
                 @endforeach
                 {!! $topics->render() !!}

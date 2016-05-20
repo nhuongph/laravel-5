@@ -20,4 +20,6 @@ Route::get('/topic/post/{id}','TopicsController@post');
 Route::get('/user','UsersController@index');
 Route::get('/user/addpost/{id}','UsersController@add_post');
 Route::get('/user/addpost/','UsersController@add_post');
+Route::get('/user/deletepost/{id}','UsersController@delete_post');
 Route::post('/user/updatepost','UsersController@update_post');
+Route::patch('/user/updatepost','UsersController@update_post');
