@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\CheckUserRequest;
+
 use App\Http\Requests;
 
 use App\Topic;
@@ -65,7 +67,7 @@ class UsersController extends Controller
         return view('Users.add_user')->with('user',$user);
     }
     
-    public function update_user(Request $request){
+    public function update_user(CheckUserRequest $request){
         $id = $request->id;
         if(!isset($id) || $id == null){
             $data_input = $request->all();
